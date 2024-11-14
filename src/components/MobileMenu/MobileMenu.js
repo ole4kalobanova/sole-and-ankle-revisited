@@ -14,61 +14,57 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
   }
 
   return (
-    <DialogOverlay
-      style={{
-        background: "hsl(0deg 0% 0% / 0.5)",
-        position: 'fixed',
-        top: 0,
-        right: 0,
-        left: 0,
-        bottom: 0,
-        display: 'flex',
-        justifyContent: 'flex-end',
-      }}
+    <OverlayWrapper
       isOpen={isOpen}
       onDismiss={onDismiss}
+      aria-label='Mobile modal menu'
     >
-      <DialogContent
-        style={{
-          background: 'white',
-          position: 'relative',
-          right: 0
-        }}
-      >
-        <DialogContentWrapper>
-          <DialogActions>
-            <UnstyledButton onClick={onDismiss}>
-              <Icon id='close' />
-              <VisuallyHidden>
-                Close
-              </VisuallyHidden>
-            </UnstyledButton>
-          </DialogActions>
-          <LinksWrapper>
-            <NavLink href="/sale">Sale</NavLink>
-            <NavLink href="/new">New&nbsp;Releases</NavLink>
-            <NavLink href="/men">Men</NavLink>
-            <NavLink href="/women">Women</NavLink>
-            <NavLink href="/kids">Kids</NavLink>
-            <NavLink href="/collections">Collections</NavLink>
-          </LinksWrapper>
-          <DialogContentFooter>
-            <FooterLink href="/terms">Terms and Conditions</FooterLink>
-            <FooterLink href="/privacy">Privacy Policy</FooterLink>
-            <FooterLink href="/contact">Contact Us</FooterLink>
-          </DialogContentFooter>
-        </DialogContentWrapper>
-      </DialogContent>
-    </DialogOverlay>
+      <DialogContentWrapper>
+        <DialogActions>
+          <UnstyledButton onClick={onDismiss}>
+            <Icon id='close' />
+            <VisuallyHidden>
+              Close
+            </VisuallyHidden>
+          </UnstyledButton>
+        </DialogActions>
+        <LinksWrapper>
+          <NavLink href="/sale">Sale</NavLink>
+          <NavLink href="/new">New&nbsp;Releases</NavLink>
+          <NavLink href="/men">Men</NavLink>
+          <NavLink href="/women">Women</NavLink>
+          <NavLink href="/kids">Kids</NavLink>
+          <NavLink href="/collections">Collections</NavLink>
+        </LinksWrapper>
+        <DialogContentFooter>
+          <FooterLink href="/terms">Terms and Conditions</FooterLink>
+          <FooterLink href="/privacy">Privacy Policy</FooterLink>
+          <FooterLink href="/contact">Contact Us</FooterLink>
+        </DialogContentFooter>
+      </DialogContentWrapper>
+    </OverlayWrapper>
   );
 };
 
-const DialogContentWrapper = styled.div`
+const OverlayWrapper = styled(DialogOverlay)`
+  background: hsl(0deg 0% 0% / 0.5);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+`
+
+const DialogContentWrapper = styled(DialogContent)`
   display: flex;
   flex-direction: column;
   width: 300px;
   height: 100%;
   justify-content: space-between;
+  background: white;
+  position: relative;
 `;
 
 const DialogActions = styled.div`
