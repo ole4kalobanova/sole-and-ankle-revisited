@@ -20,14 +20,13 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
       aria-label='Mobile modal menu'
     >
       <DialogContentWrapper>
-        <DialogActions>
-          <UnstyledButton onClick={onDismiss}>
+        <CloseButton onClick={onDismiss}>
             <Icon id='close' />
             <VisuallyHidden>
-              Close
+              Close modal menu
             </VisuallyHidden>
-          </UnstyledButton>
-        </DialogActions>
+        </CloseButton>
+        <Filler />
         <LinksWrapper>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -62,23 +61,22 @@ const DialogContentWrapper = styled(DialogContent)`
   flex-direction: column;
   width: 300px;
   height: 100%;
-  justify-content: space-between;
-  background: white;
+  background: ${COLORS.white};
   position: relative;
+  padding: 32px;
 `;
 
-const DialogActions = styled.div`
-  display: flex;
-  align-items: baseline;
-  justify-content: flex-end;
-  padding: 26px 32px 16px 32px;
+const CloseButton = styled(UnstyledButton)`
+  position: absolute;
+  top: 10px;
+  right: 0;
+  padding: 16px;  /* We made this like a bigger tap target for phone/tablet users */
 `;
 
 const LinksWrapper = styled.nav`
   display: flex;
   flex-direction: column;
-  padding: 32px;
-  gap: 22px;
+  gap: 16px;
 `
 const NavLink = styled.a`
   font-size: 1.125rem;
@@ -93,10 +91,11 @@ const NavLink = styled.a`
 `;
 
 const DialogContentFooter = styled.footer`
-  display:flex;
+  display: flex;
   flex-direction: column;
-  padding: 32px;
-  gap: 14px;
+  justify-content: flex-end;
+  gap: 12px;
+  flex: 1;
 `;
 
 const FooterLink = styled.a`
@@ -106,6 +105,10 @@ const FooterLink = styled.a`
   &:hover {
     color: ${COLORS.gray[900]};
   }
+`;
+
+const Filler = styled.div`
+  flex: 1;
 `;
 
 export default MobileMenu;
