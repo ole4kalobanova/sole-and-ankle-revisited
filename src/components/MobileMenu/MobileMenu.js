@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 
-import { COLORS, WEIGHTS, QUERIES } from '../../constants';
+import { WEIGHTS } from '../../constants';
 import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
 import VisuallyHidden from '../VisuallyHidden';
@@ -21,7 +21,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
     >
       <DialogContentWrapper>
         <CloseButton onClick={onDismiss}>
-            <Icon id='close' />
+            <Icon id='close' color={'var(--color-gray-900)'}/>
             <VisuallyHidden>
               Close modal menu
             </VisuallyHidden>
@@ -46,7 +46,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
 };
 
 const OverlayWrapper = styled(DialogOverlay)`
-  background: hsl(0deg 0% 0% / 0.5);
+  background: var(--color-backdrop);
   position: fixed;
   top: 0;
   right: 0;
@@ -61,7 +61,7 @@ const DialogContentWrapper = styled(DialogContent)`
   flex-direction: column;
   width: 300px;
   height: 100%;
-  background: ${COLORS.white};
+  background: var(--color-white);
   position: relative;
   padding: 32px;
 `;
@@ -82,11 +82,11 @@ const NavLink = styled.a`
   font-size: 1.125rem;
   text-transform: uppercase;
   text-decoration: none;
-  color: ${COLORS.gray[900]};
+  color: var(--color-gray-900);
   font-weight: ${WEIGHTS.medium};
 
   &:first-of-type {
-    color: ${COLORS.secondary};
+    color: var(--color-secondary);
   }
 `;
 
@@ -99,11 +99,11 @@ const DialogContentFooter = styled.footer`
 `;
 
 const FooterLink = styled.a`
-  color: ${COLORS.gray[700]};
+  color: var(--color-gray-700);
   text-decoration: none;
 
   &:hover {
-    color: ${COLORS.gray[900]};
+    color: var(--color-gray-900);
   }
 `;
 
